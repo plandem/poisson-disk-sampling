@@ -1,24 +1,25 @@
 package poisson
 
 import (
-	"os"
 	"image"
 	"image/png"
+	"os"
 )
 
-type GrayscalePngFilter struct {
+type grayScalePngFilter struct {
 	*noiseFilter
 	density image.Image
 }
 
-func NewGrayscalePngFilter(width, height int, pngFileName string) (PointFilter) {
-	f,_ := os.Open(pngFileName)
+//NewGrayScalePngFilter returns a PointFilter that uses a gray scale image for filtering
+func NewGrayScalePngFilter(width, height int, pngFileName string) PointFilter {
+	f, _ := os.Open(pngFileName)
 	defer f.Close()
 	density, _ := png.Decode(f)
 
-	filter := &GrayscalePngFilter {
-		noiseFilter: &noiseFilter {
-			width: width,
+	filter := &grayScalePngFilter{
+		noiseFilter: &noiseFilter{
+			width:  width,
 			height: height,
 		},
 		density: density,
@@ -29,9 +30,9 @@ func NewGrayscalePngFilter(width, height int, pngFileName string) (PointFilter) 
 	return filter
 }
 
-func (f *GrayscalePngFilter) GetNoiseValue(x, y int) (float64) {
+func (f *grayScalePngFilter) GetNoiseValue(x, y int) float64 {
 	C := f.density.At(x, y)
-	V,_,_,_ := C.RGBA()
+	V, _, _, _ := C.RGBA()
 
-	return float64(V >> 8) / 255.0
+	return float64(V>>8) / 255.0
 }

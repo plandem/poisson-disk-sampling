@@ -1,15 +1,11 @@
 package poisson
 
-/**
-	Poisson disk sampling
-	Author: Andrey Gayvoronsky, plandem@gmail.com
-	Based on article: http://devmag.org.za/2009/05/03/poisson-disk-sampling/
- */
 import (
 	"math"
 )
 
-func NewPoissonDisk(points int, opts ...Option) ([]*Point) {
+//NewPoissonDisk returns sampling points with provided options
+func NewPoissonDisk(points int, opts ...Option) []*Point {
 	//make a copy of default settings
 	defaultSettings := defaultOptions
 
@@ -28,7 +24,7 @@ func NewPoissonDisk(points int, opts ...Option) ([]*Point) {
 	width := int(math.Ceil(1.0 / cellSize))
 	height := int(math.Ceil(1.0 / cellSize))
 
-	grid := NewGrid(width, height, cellSize)
+	grid := newGrid(width, height, cellSize)
 	maxDist := settings.minDistance * settings.minDistance
 
 	queue := make([]*Point, 0)
@@ -38,7 +34,7 @@ func NewPoissonDisk(points int, opts ...Option) ([]*Point) {
 
 	//generate the first point randomly
 	for {
-		if newPoint = (&Point{settings.generator.RandomFloat(), settings.generator.RandomFloat() }); settings.areaFilter.Filter(newPoint, settings) {
+		if newPoint = (&Point{settings.generator.Float(), settings.generator.Float()}); settings.areaFilter.Filter(newPoint, settings) {
 			break
 		}
 	}
@@ -55,7 +51,7 @@ func NewPoissonDisk(points int, opts ...Option) ([]*Point) {
 			newPoint = point.RandomPointAround(settings.minDistance, settings.generator)
 
 			//if point inside of allowed area and there is no any neighbourhood point around, then add it
-			if settings.areaFilter.Filter(newPoint, settings) && !grid.isNeighbourhood(newPoint, maxDist) {
+			if settings.areaFilter.Filter(newPoint, settings) && !grid.IsNeighbourhood(newPoint, maxDist) {
 				queue = append(queue, newPoint)
 				samplePoints = append(samplePoints, newPoint)
 				grid.SetPoint(newPoint)

@@ -1,20 +1,20 @@
 package poisson_test
 
 import (
-	"os"
-	"image"
-	"image/draw"
-	"image/color"
-	"image/png"
-	"github.com/plandem/poisson-disk-sampling"
 	"github.com/ojrac/opensimplex-go"
+	"github.com/plandem/poisson-disk-sampling"
+	"image"
+	"image/color"
+	"image/draw"
+	"image/png"
+	"os"
 )
 
 const WIDTH = 1024
 const HEIGHT = 1024
 const NUM_POINTS = 50000
 
-func ExampleBasic() {
+func Example_basic() {
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(NUM_POINTS)
 
@@ -35,7 +35,7 @@ func ExampleBasic() {
 	// Output:
 }
 
-func ExampleMinDistance() {
+func Example_minDistance() {
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
 		NUM_POINTS,
@@ -59,7 +59,7 @@ func ExampleMinDistance() {
 	// Output:
 }
 
-func ExampleAreaCircleFilter() {
+func Example_areaCircleFilter() {
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
 		NUM_POINTS,
@@ -83,7 +83,7 @@ func ExampleAreaCircleFilter() {
 	// Output:
 }
 
-func ExampleAreaRectangleFilter() {
+func Example_areaRectangleFilter() {
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
 		NUM_POINTS,
@@ -107,11 +107,11 @@ func ExampleAreaRectangleFilter() {
 	// Output:
 }
 
-func ExampleWithSimplexNoisePostFilter() {
+func Example_withSimplexNoisePostFilter() {
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
 		NUM_POINTS,
-		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH, HEIGHT, WIDTH / 8, 0)),
+		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH, HEIGHT, WIDTH/8, 0)),
 	)
 
 	//draw result
@@ -132,7 +132,7 @@ func ExampleWithSimplexNoisePostFilter() {
 	// Output:
 }
 
-func ExampleWithPngNoisePostFilter() {
+func Example_withPngNoisePostFilter() {
 	//generate png file with simple noise
 	noise := opensimplex.NewWithSeed(0)
 	noisePng := image.NewRGBA(image.Rect(0, 0, WIDTH, HEIGHT))
@@ -140,9 +140,9 @@ func ExampleWithPngNoisePostFilter() {
 
 	for y := 0; y < HEIGHT; y++ {
 		for x := 0; x < WIDTH; x++ {
-			value := noise.Eval2(float64(x) / float64(featureSize), float64(y) / float64(featureSize))
-			c := 0x01 * uint8((value + 1) * 127)
-			noisePng.Set(x, y, color.RGBA{c,c,c,255})
+			value := noise.Eval2(float64(x)/float64(featureSize), float64(y)/float64(featureSize))
+			c := 0x01 * uint8((value+1)*127)
+			noisePng.Set(x, y, color.RGBA{c, c, c, 255})
 		}
 	}
 
@@ -153,7 +153,7 @@ func ExampleWithPngNoisePostFilter() {
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
 		NUM_POINTS,
-		poisson.WithPostFilter(poisson.NewGrayscalePngFilter(WIDTH, HEIGHT, "example-noise.png")),
+		poisson.WithPostFilter(poisson.NewGrayScalePngFilter(WIDTH, HEIGHT, "example-noise.png")),
 	)
 
 	//draw result
@@ -174,7 +174,7 @@ func ExampleWithPngNoisePostFilter() {
 	// Output:
 }
 
-func ExampleFullFeatured() {
+func Example_fullFeatured() {
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
 		NUM_POINTS,
@@ -182,7 +182,7 @@ func ExampleFullFeatured() {
 		poisson.WithMinDistance(0.01),
 		poisson.WithGenerator(poisson.NewBasicGenerator(100)),
 		poisson.WithAreaFilter(poisson.NewCircleFilter(0.5, 0.5, 0.25)),
-		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH, HEIGHT, WIDTH / 16, 0)),
+		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH, HEIGHT, WIDTH/16, 0)),
 	)
 
 	//draw result
@@ -202,4 +202,3 @@ func ExampleFullFeatured() {
 
 	// Output:
 }
-
