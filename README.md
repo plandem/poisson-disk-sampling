@@ -42,7 +42,7 @@ func main() {
 }
 ```
 
-For for examples at file **example_test.go**
+Get more examples at **example_test.go**
 
 ### basic example
 <img alt="Basic Example" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-basic.png" height="512" width="512">
