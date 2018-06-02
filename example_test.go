@@ -28,7 +28,7 @@ func Example_basic() {
 	}
 
 	//save result png
-	f, _ := os.OpenFile("example-output-basic.png", os.O_WRONLY|os.O_CREATE, 0600)
+	f, _ := os.OpenFile("./example-screenshots/output-basic.png", os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	png.Encode(f, img)
 
@@ -52,7 +52,7 @@ func Example_minDistance() {
 	}
 
 	//save result png
-	f, _ := os.OpenFile("example-output-min-distance.png", os.O_WRONLY|os.O_CREATE, 0600)
+	f, _ := os.OpenFile("./example-screenshots/output-min-distance.png", os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	png.Encode(f, img)
 
@@ -76,7 +76,7 @@ func Example_areaCircleFilter() {
 	}
 
 	//save result png
-	f, _ := os.OpenFile("example-output-area-circle-filter.png", os.O_WRONLY|os.O_CREATE, 0600)
+	f, _ := os.OpenFile("./example-screenshots/output-area-circle-filter.png", os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	png.Encode(f, img)
 
@@ -100,7 +100,7 @@ func Example_areaRectangleFilter() {
 	}
 
 	//save result png
-	f, _ := os.OpenFile("example-output-area-rectangle-filter.png", os.O_WRONLY|os.O_CREATE, 0600)
+	f, _ := os.OpenFile("./example-screenshots/output-area-rectangle-filter.png", os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	png.Encode(f, img)
 
@@ -125,7 +125,7 @@ func Example_withSimplexNoisePostFilter() {
 	}
 
 	//save result png
-	f, _ := os.OpenFile("example-output-simplex-post-filter.png", os.O_WRONLY|os.O_CREATE, 0600)
+	f, _ := os.OpenFile("./example-screenshots/output-simplex-post-filter.png", os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	png.Encode(f, img)
 
@@ -146,14 +146,14 @@ func Example_withPngNoisePostFilter() {
 		}
 	}
 
-	f, _ := os.OpenFile("example-noise.png", os.O_WRONLY|os.O_CREATE, 0600)
+	f, _ := os.OpenFile("./example-screenshots/noise.png", os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	png.Encode(f, noisePng)
 
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
 		NUM_POINTS,
-		poisson.WithPostFilter(poisson.NewGrayScalePngFilter(WIDTH, HEIGHT, "example-noise.png")),
+		poisson.WithPostFilter(poisson.NewGrayScalePngFilter(WIDTH, HEIGHT, "./example-screenshots/noise.png")),
 	)
 
 	//draw result
@@ -167,7 +167,7 @@ func Example_withPngNoisePostFilter() {
 	}
 
 	//save result png
-	f, _ = os.OpenFile("example-output-png-post-filter.png", os.O_WRONLY|os.O_CREATE, 0600)
+	f, _ = os.OpenFile("./example-screenshots/output-png-post-filter.png", os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	png.Encode(f, img)
 
@@ -196,7 +196,7 @@ func Example_fullFeatured() {
 	}
 
 	//save result png
-	f, _ := os.OpenFile("example-output-full-featured.png", os.O_WRONLY|os.O_CREATE, 0600)
+	f, _ := os.OpenFile("./example-screenshots/output-full-featured.png", os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	png.Encode(f, img)
 
