@@ -10,13 +10,13 @@ type Point struct {
 	Y float64
 }
 
-//return distance between point and other points
+//Distance returns a distance between point and other points
 func (point *Point) Distance(other *Point) float64 {
 	dx, dy := point.X-other.X, point.Y-other.Y
 	return dx*dx + dy*dy
 }
 
-//generate random point in annulus [minDist, 2 * minDist] using generator to get random radius and angle
+//RandomPointAround generates random point in annulus [minDist, 2 * minDist] using generator to get random radius and angle
 func (point *Point) RandomPointAround(minDist float64, generator RandomGenerator) *Point {
 	//random radius between minDist and 2 * minDist
 	radius := minDist * (generator.Float() + 1)
