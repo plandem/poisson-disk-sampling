@@ -45,25 +45,25 @@ func main() {
 For for examples at file **example_test.go**
 
 ### basic example
-![Basic Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-basic.png)
+<img alt="Basic Example" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-basic.png" height="512" width="512">
 
 ### with minimum distance
-![Minimum Distance Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-min-distance.png)
+<img alt="Minimum Distance Example" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-min-distance.png" height="512" width="512">
 
 ### with circle area filter
-![Circle Area Filter Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-area-circle-filter.png)
+<img alt="Circle Area Filter Example" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-area-circle-filter.png" height="512" width="512">
 
 ### with rectangle area filter
-![Rectangle Area Filter Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-area-rectangle-filter.png)
+<img alt="Rectangle Area Filter Example" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-area-rectangle-filter.png" height="512" width="512">
 
 ### with simplex noise post filter
-![Simplex Noise Post Filter Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-simplex-post-filter.png)
+<img alt="Simplex Noise Post Filter Example" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-simplex-post-filter.png" height="512" width="512">
 
 ### with PNG map post filter
-![PNG Map](https://raw.github.com/plandem/poisson-disk-sampling/master/example-noise.png)
-![PNG Post Filter Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-png-post-filter.png)
+<img alt="PNG Map" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-noise.png" height="512" width="512">
+<img alt="PNG Post Filter Example" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-png-post-filter.png" height="512" width="512">
 
 ### full featured example
-![Full Featured Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-full-featured.png)
+<img alt="Full Featured Example" src="https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-full-featured.png" height="512" width="512">
 
 
