@@ -44,3 +44,26 @@ func main() {
 
 For for examples at file **example_test.go**
 
+### basic example
+![Basic Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-basic.png)
+
+### with minimum distance
+![Minimum Distance Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-min-distance.png)
+
+### with circle area filter
+![Circle Area Filter Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-area-circle-filter.png)
+
+### with rectangle area filter
+![Rectangle Area Filter Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-area-rectangle-filter.png)
+
+### with simplex noise post filter
+![Simplex Noise Post Filter Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-simplex-post-filter.png)
+
+### with PNG map post filter
+![PNG Map](https://raw.github.com/plandem/poisson-disk-sampling/master/example-noise.png)
+![PNG Post Filter Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-png-post-filter.png)
+
+### full featured example
+![Full Featured Example](https://raw.github.com/plandem/poisson-disk-sampling/master/example-output-full-featured.png)
+
+
