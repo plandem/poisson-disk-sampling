@@ -24,7 +24,7 @@ func NewPoissonDisk(points int, opts ...Option) []*Point {
 	width := int(math.Ceil(1.0 / cellSize))
 	height := int(math.Ceil(1.0 / cellSize))
 
-	grid := newGrid(width, height, cellSize)
+	grid := NewGrid(width, height, cellSize)
 	maxDist := settings.minDistance * settings.minDistance
 
 	queue := make([]*Point, 0)
