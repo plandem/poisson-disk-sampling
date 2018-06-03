@@ -18,6 +18,12 @@ type options struct {
 
 	//postFilter filters already valid point for additional condition
 	postFilter PointFilter
+
+	//points to fill the grid before processing
+	points []*Point
+
+	//startPoint is a point to start from
+	startPoint *Point
 }
 
 var defaultOptions = options{
@@ -58,5 +64,22 @@ func WithAreaFilter(filter PointFilter) Option {
 func WithPostFilter(filter PointFilter) Option {
 	return func(o *options) {
 		o.postFilter = filter
+	}
+}
+
+//WithStartPoint set a start point at x,y to start from
+func WithStartPoint(x, y float64) Option {
+	return func(o *options) {
+		o.startPoint = &Point{
+			x,
+			y,
+		}
+	}
+}
+
+//WithPoints set points to will the grid before processing. N.B.: only one point per cell - only last one will be stored at grid
+func WithPoints(points []*Point) Option {
+	return func(o *options) {
+		o.points = points
 	}
 }

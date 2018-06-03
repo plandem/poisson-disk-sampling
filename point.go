@@ -16,6 +16,11 @@ func (point *Point) Distance(other *Point) float64 {
 	return dx*dx + dy*dy
 }
 
+//NewRandomPoint generates random point using generator to get random position
+func NewRandomPoint(generator RandomGenerator) *Point {
+	return &Point{generator.Float(), generator.Float()}
+}
+
 //RandomPointAround generates random point in annulus [minDist, 2 * minDist] using generator to get random radius and angle
 func (point *Point) RandomPointAround(minDist float64, generator RandomGenerator) *Point {
 	//random radius between minDist and 2 * minDist

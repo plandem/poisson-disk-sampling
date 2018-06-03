@@ -183,6 +183,13 @@ func Example_fullFeatured() {
 		poisson.WithGenerator(poisson.NewBasicGenerator(100)),
 		poisson.WithAreaFilter(poisson.NewCircleFilter(0.5, 0.5, 0.25)),
 		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH, HEIGHT, WIDTH/16, 0)),
+		poisson.WithStartPoint(0.5,0.5),
+		poisson.WithPoints([]*poisson.Point{
+			{X: 0.45, Y: 0.5},
+			{X: 0.55, Y: 0.5},
+			{X: 0.5, Y: 0.45},
+			{X: 0.5, Y: 0.55},
+		}),
 	)
 
 	//draw result

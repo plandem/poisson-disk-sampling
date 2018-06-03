@@ -5,7 +5,7 @@ import (
 )
 
 //NewPoissonDisk returns sampling points with provided options
-func NewPoissonDisk(points int, opts ...Option) []*Point {
+func NewPoissonDisk(numPoints int, opts ...Option) []*Point {
 	//make a copy of default settings
 	defaultSettings := defaultOptions
 
@@ -17,25 +17,41 @@ func NewPoissonDisk(points int, opts ...Option) []*Point {
 
 	//if there is no minimum distance, then calculate it via number of points
 	if settings.minDistance <= 0 {
-		settings.minDistance = math.Sqrt(float64(points)) / float64(points)
+		settings.minDistance = math.Sqrt(float64(numPoints)) / float64(numPoints)
 	}
+
+	maxDist := settings.minDistance * settings.minDistance
 
 	cellSize := float64(settings.minDistance) / math.Sqrt2
 	width := int(math.Ceil(1.0 / cellSize))
 	height := int(math.Ceil(1.0 / cellSize))
-
 	grid := NewGrid(width, height, cellSize)
-	maxDist := settings.minDistance * settings.minDistance
+
+	var point, newPoint *Point
 
 	queue := make([]*Point, 0)
 	samplePoints := make([]*Point, 0)
 
-	var point, newPoint *Point
+	//populate grid with predefined points
+	//because of dimension of the grid - its possible that few points will be related to same cell, so last one will be used
+	if len(settings.points) > 0 {
+		for _, point = range settings.points {
+			grid.SetPoint(point)
+		}
+	}
 
-	//generate the first point randomly
-	for {
-		if newPoint = (&Point{settings.generator.Float(), settings.generator.Float()}); settings.areaFilter.Filter(newPoint, settings) {
-			break
+	//resolve first point to start from
+	if newPoint = settings.startPoint; newPoint != nil {
+		//accept only valid startPoint
+		if *newPoint == (Point{}) || !settings.areaFilter.Filter(newPoint, settings) {
+			panic("You must provide a valid start point with a valid coordinates that fit area")
+		}
+	} else {
+		//generate the first point randomly
+		for {
+			if newPoint = NewRandomPoint(settings.generator); settings.areaFilter.Filter(newPoint, settings) {
+				break
+			}
 		}
 	}
 
@@ -44,7 +60,7 @@ func NewPoissonDisk(points int, opts ...Option) []*Point {
 	grid.SetPoint(newPoint)
 
 	//generate other points from points in queue.
-	for len(queue) > 0 && len(samplePoints) < points {
+	for len(queue) > 0 && len(samplePoints) < numPoints {
 		point, queue = queue[0], queue[1:]
 
 		for i := 0; i < settings.tries; i++ {
