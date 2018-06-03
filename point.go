@@ -10,6 +10,11 @@ type Point struct {
 	Y float64
 }
 
+//PointFilter interface is for filters to return valid points. In general, any point must be inside of [0.0, 1.0] box
+type PointFilter interface {
+	Filter(point *Point, settings *options) bool
+}
+
 //Distance returns a distance between point and other points
 func (point *Point) Distance(other *Point) float64 {
 	dx, dy := point.X-other.X, point.Y-other.Y

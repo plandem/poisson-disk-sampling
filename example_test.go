@@ -111,7 +111,7 @@ func Example_withSimplexNoisePostFilter() {
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
 		NUM_POINTS,
-		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH, HEIGHT, WIDTH/8, 0)),
+		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH/32, 0)),
 	)
 
 	//draw result
@@ -152,8 +152,8 @@ func Example_withPngNoisePostFilter() {
 
 	//generate poisson disk samplings
 	points := poisson.NewPoissonDisk(
-		NUM_POINTS,
-		poisson.WithPostFilter(poisson.NewGrayScalePngFilter(WIDTH, HEIGHT, "./example-screenshots/noise.png")),
+		NUM_POINTS*2,
+		poisson.WithPostFilter(poisson.NewGrayScalePngFilter("./example-screenshots/noise.png")),
 	)
 
 	//draw result
@@ -182,8 +182,8 @@ func Example_fullFeatured() {
 		poisson.WithMinDistance(0.01),
 		poisson.WithGenerator(poisson.NewBasicGenerator(100)),
 		poisson.WithAreaFilter(poisson.NewCircleFilter(0.5, 0.5, 0.25)),
-		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH, HEIGHT, WIDTH/16, 0)),
-		poisson.WithStartPoint(0.5,0.5),
+		poisson.WithPostFilter(poisson.NewSimplexNoiseFilter(WIDTH/16, 0)),
+		poisson.WithStartPoint(0.5, 0.5),
 		poisson.WithPoints([]*poisson.Point{
 			{X: 0.45, Y: 0.5},
 			{X: 0.55, Y: 0.5},
