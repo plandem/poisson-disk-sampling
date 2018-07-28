@@ -3,7 +3,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/plandem/poisson-disk-sampling)](https://goreportcard.com/report/github.com/plandem/poisson-disk-sampling)
 [![GoDoc](https://godoc.org/github.com/plandem/poisson-disk-sampling?status.svg)](https://godoc.org/github.com/plandem/poisson-disk-sampling)
 [![License](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/plandem/poisson-disk-sampling/master/LICENSE)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/plandem)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/gayvoronsky)
 <!-- [![Code Coverage](https://codecov.io/gh/plandem/poisson-disk-sampling/branch/master/graph/badge.svg)](https://codecov.io/gh/plandem/poisson-disk-sampling) -->
 
 Based on article: http://devmag.org.za/2009/05/03/poisson-disk-sampling/
